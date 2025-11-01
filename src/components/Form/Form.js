@@ -1,13 +1,11 @@
 // Form.js
 
-import React, { useContext } from 'react';
+import React from 'react';
 import { Preferences, Features, RecommendationType } from './Fields';
 import { SubmitButton } from './SubmitButton';
 import useProducts from '../../hooks/useProducts';
 import useForm from '../../hooks/useForm';
 import useRecommendations from '../../hooks/useRecommendations';
-import { RecommendationContext } from '../../store';
-import { useStoreActions } from '../../hooks/useStoreActions';
 
 function Form() {
   const { preferences, features, products } = useProducts();
@@ -17,18 +15,11 @@ function Form() {
     selectedRecommendationType: '',
   });
 
-  const { getRecommendations } = useRecommendations(products);
-
-  const dispatch = useContext(RecommendationContext).dispatch;
-  const { setRecommendations } = useStoreActions(dispatch);
+  const { generateRecommendations } = useRecommendations(products);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const dataRecommendations = getRecommendations(formData);
-
-    setRecommendations(dataRecommendations);
-
+    generateRecommendations(formData);
   };
 
   return (

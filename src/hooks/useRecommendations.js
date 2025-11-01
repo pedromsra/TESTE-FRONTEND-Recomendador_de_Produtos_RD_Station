@@ -1,16 +1,24 @@
 // useRecommendations.js
 
-import { useState } from 'react';
+import { useContext } from 'react';
 import recommendationService from '../services/recommendation.service';
+import { RecommendationContext } from '../store';
+import { handleSetRecommendations } from '../store/actions';
 
 function useRecommendations(products) {
-  const [recommendations, setRecommendations] = useState([]);
+  const {state, dispatch} = useContext(RecommendationContext);
 
-  const getRecommendations = (formData) => {
-    return recommendationService.getRecommendations(formData, products);
+  const setRecommendations = (newRecommendations) => {
+    handleSetRecommendations(dispatch, newRecommendations);
   };
 
-  return { recommendations, getRecommendations, setRecommendations };
+  const generateRecommendations = (formData) => {
+    const recommendations = recommendationService.getRecommendations(formData, products);
+    setRecommendations(recommendations);
+    return recommendations;
+  }
+
+  return { recommendations: state, generateRecommendations, setRecommendations };
 }
 
 export default useRecommendations;
