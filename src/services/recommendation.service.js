@@ -10,12 +10,14 @@ const getRecommendations = (
   products
 ) => {
   const filterParams = { products, selectedFeatures, selectedPreferences };
-  const filteredProducts =
-    selectedRecommendationType === 'SingleProduct'
-      ? filterAndRankByFeaturesOrPreferences(filterParams).slice(-1)
-      : filterByFeaturesOrPreferences(filterParams);
 
-  return filteredProducts;
+  const isSingleProduct = selectedRecommendationType === 'SingleProduct';
+
+  if (isSingleProduct) {
+    return filterAndRankByFeaturesOrPreferences(filterParams).slice(-1)
+  } else {
+    return filterByFeaturesOrPreferences(filterParams);
+  }
 };
 
 const recommendationService = { getRecommendations };
