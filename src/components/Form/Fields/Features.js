@@ -14,7 +14,7 @@ function Features({ features, selectedFeatures = [], onFeatureChange }) {
   };
 
   return (
-    <div className="mb-4">
+    <section className="mb-4">
       <h2 className="text-lg font-bold mb-2">Funcionalidades:</h2>
       <ul>
         {features.map((feature, index) => (
@@ -30,7 +30,7 @@ function Features({ features, selectedFeatures = [], onFeatureChange }) {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
 

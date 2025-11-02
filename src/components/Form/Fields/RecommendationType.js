@@ -3,7 +3,7 @@ import Checkbox from '../../shared/Checkbox';
 
 function RecommendationType({ onRecommendationTypeChange }) {
   return (
-    <div className="mb-4">
+    <section className="mb-4">
       <h2 className="text-lg font-bold mb-2">Tipo de Recomendação:</h2>
       <div className="flex items-center">
         <Checkbox
@@ -27,7 +27,7 @@ function RecommendationType({ onRecommendationTypeChange }) {
         />
         <label htmlFor="MultipleProducts">Múltiplos Produtos</label>
       </div>
-    </div>
+    </section>
   );
 }
 

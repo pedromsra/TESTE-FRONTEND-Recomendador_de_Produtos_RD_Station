@@ -20,7 +20,7 @@ function Preferences({
   };
 
   return (
-    <div className="mb-4">
+    <section className="mb-4">
       <h2 className="text-lg font-bold mb-2">Preferências:</h2>
       <ul>
         {preferences.map((preference, index) => (
@@ -36,7 +36,7 @@ function Preferences({
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
 

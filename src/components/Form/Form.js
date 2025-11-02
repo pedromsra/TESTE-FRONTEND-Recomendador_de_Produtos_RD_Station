@@ -6,9 +6,11 @@ import { SubmitButton } from './SubmitButton';
 import useProducts from '../../hooks/useProducts';
 import useForm from '../../hooks/useForm';
 import useRecommendations from '../../hooks/useRecommendations';
+import { navigate } from '../../utils/navigation';
 
 function Form() {
   const { preferences, features, products } = useProducts();
+
   const { formData, handleChange } = useForm({
     selectedPreferences: [],
     selectedFeatures: [],
@@ -20,6 +22,7 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
     generateRecommendations(formData);
+    navigate('#recommendation-list');
   };
 
   return (
