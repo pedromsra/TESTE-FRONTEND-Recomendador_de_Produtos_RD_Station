@@ -2,11 +2,12 @@ import React from 'react';
 import Form from './components/Form/Form';
 import RecommendationList from './components/RecommendationList/RecommendationList';
 import { RecommendationProvider } from './store/provider';
+import { MainLayout } from './MainLayout';
 
 function App() {
   return (
     <RecommendationProvider>
-      <main className="bg-gray-100 min-h-screen flex flex-col justify-center items-center">
+      <MainLayout>
         <header>
           <h1 className="text-3xl font-bold mb-8">
             Recomendador de Produtos RD Station
@@ -32,7 +33,7 @@ function App() {
             <RecommendationList />
           </div>
         </section>
-      </main>
+      </MainLayout>
     </RecommendationProvider>
   );
 }
