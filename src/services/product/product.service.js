@@ -1,5 +1,4 @@
-import { baseURL } from '..';
-
+const baseURL = process.env.REACT_APP_BASE_URL;
 
 /*
 * @param {object} httpClient - cliente HTTP para fazer requisições
