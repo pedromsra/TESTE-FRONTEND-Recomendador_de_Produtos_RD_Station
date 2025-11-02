@@ -47,7 +47,14 @@ function Form() {
           handleChange('selectedRecommendationType', selected)
         }
       />
-      <SubmitButton text="Obter recomendação" />
+      <SubmitButton
+        disabled={
+          formData.selectedFeatures.length === 0 &&
+          formData.selectedPreferences.length === 0
+        }
+        text="Obter recomendação"
+        title="Selecione Funcionalidades e/ou Preferências do seu interesse"
+      />
     </form>
   );
 }
