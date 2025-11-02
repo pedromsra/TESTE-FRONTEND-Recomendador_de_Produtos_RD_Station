@@ -1,7 +1,7 @@
 // useRecommendations.js
 
 import { useContext } from 'react';
-import recommendationService from '../services/recommendation.service';
+import recommendationService from '../services/recommendation/recommendation.service';
 import { RecommendationContext } from '../store';
 import { handleSetRecommendations } from '../store/actions';
 

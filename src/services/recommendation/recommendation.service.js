@@ -1,5 +1,5 @@
-import { filterByFeaturesOrPreferences } from '../utils/filterByFeaturesOrPreferences';
-import { filterAndRankByFeaturesOrPreferences } from '../utils/filterAndRankByFeaturesOrPreferences';
+import { multipleProductsRecommendation } from './multipleProductsRecommendation';
+import { singleProductRecommendation } from './singleProductRecommendation';
 
 const getRecommendations = (
   { selectedFeatures, selectedPreferences, selectedRecommendationType } = {
@@ -14,9 +14,9 @@ const getRecommendations = (
   const isSingleProduct = selectedRecommendationType === 'SingleProduct';
 
   if (isSingleProduct) {
-    return filterAndRankByFeaturesOrPreferences(filterParams).slice(-1)
+    return singleProductRecommendation(filterParams).slice(-1)
   } else {
-    return filterByFeaturesOrPreferences(filterParams);
+    return multipleProductsRecommendation(filterParams);
   }
 };
 

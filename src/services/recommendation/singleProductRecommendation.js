@@ -1,6 +1,6 @@
-import { jaccardScore } from './jaccard';
+import { jaccardScore } from '../../utils/jaccard';
 
-export function filterAndRankByFeaturesOrPreferences({
+export function singleProductRecommendation({
   products,
   selectedFeatures,
   selectedPreferences,
@@ -23,5 +23,6 @@ export function filterAndRankByFeaturesOrPreferences({
     .map((product) => {
       const { score, ...rest } = product;
       return rest;
-    });
+    })
+    .slice(-1);
 }
