@@ -1,5 +1,6 @@
 import recommendationService from './recommendation.service';
 import mockProducts from '../../mocks/mockProducts';
+import { waitFor } from '@testing-library/react';
 
 describe('recommendationService', () => {
   test('Retorna recomendação correta para SingleProduct com base nas preferências selecionadas', () => {
@@ -68,7 +69,10 @@ describe('recommendationService', () => {
 
   test('Retorna o último match em caso de empate para SingleProduct', () => {
     const formData = {
-      selectedPreferences: ['Automação de marketing', 'Integração com chatbots'],
+      selectedPreferences: [
+        'Automação de marketing',
+        'Integração com chatbots',
+      ],
       selectedRecommendationType: 'SingleProduct',
     };
 
@@ -79,5 +83,73 @@ describe('recommendationService', () => {
 
     expect(recommendations).toHaveLength(1);
     expect(recommendations[0].name).toBe('RD Conversas');
+  });
+  test('Teste leve de performance - muitos produtos - MultipleProducts', async () => {
+    const bigProductsList = Array.from({ length: 20000 }, (_, i) => ({
+      ...mockProducts[i % mockProducts.length],
+      id: i,
+      name: `${mockProducts[i % mockProducts.length]} - Copy ${i}`,
+    }));
+
+    const mockFormData = {
+      selectedPreferences: [
+        'Integração fácil com ferramentas de e-mail',
+        'Personalização de funis de vendas',
+        'Automação de marketing',
+      ],
+      selectedFeatures: [
+        'Rastreamento de interações com clientes',
+        'Rastreamento de comportamento do usuário',
+      ],
+      selectedRecommendationType: 'MultipleProducts',
+    }
+
+    const start = performance.now();
+
+    await waitFor(() => {
+      recommendationService.getRecommendations(
+        mockFormData,
+        bigProductsList
+      );
+    })
+
+    const end = performance.now();
+    const duration = end - start;
+
+    expect(duration).toBeLessThan(500);
+  });
+  test('Teste leve de performance - muitos produtos - SingleProducts', async () => {
+    const bigProductsList = Array.from({ length: 20000 }, (_, i) => ({
+      ...mockProducts[i % mockProducts.length],
+      id: i,
+      name: `${mockProducts[i % mockProducts.length]} - Copy ${i}`,
+    }));
+
+    const mockFormData = {
+      selectedPreferences: [
+        'Integração fácil com ferramentas de e-mail',
+        'Personalização de funis de vendas',
+        'Automação de marketing',
+      ],
+      selectedFeatures: [
+        'Rastreamento de interações com clientes',
+        'Rastreamento de comportamento do usuário',
+      ],
+      selectedRecommendationType: 'SingleProduct',
+    }
+
+    const start = performance.now();
+
+    await waitFor(() => {
+      recommendationService.getRecommendations(
+        mockFormData,
+        bigProductsList
+      );
+    })
+
+    const end = performance.now();
+    const duration = end - start;
+
+    expect(duration).toBeLessThan(500);
   });
 });

@@ -1,7 +1,7 @@
 import { multipleProductsRecommendation } from './multipleProductsRecommendation';
 import { singleProductRecommendation } from './singleProductRecommendation';
 
-const getRecommendations = (
+export const getRecommendations = (
   { selectedFeatures, selectedPreferences, selectedRecommendationType } = {
     selectedPreferences: [],
     selectedFeatures: [],
@@ -9,12 +9,16 @@ const getRecommendations = (
   },
   products
 ) => {
+  if (products.length === 0) {
+    return [];
+  }
+
   const filterParams = { products, selectedFeatures, selectedPreferences };
 
   const isSingleProduct = selectedRecommendationType === 'SingleProduct';
 
   if (isSingleProduct) {
-    return singleProductRecommendation(filterParams).slice(-1)
+    return singleProductRecommendation(filterParams);
   } else {
     return multipleProductsRecommendation(filterParams);
   }

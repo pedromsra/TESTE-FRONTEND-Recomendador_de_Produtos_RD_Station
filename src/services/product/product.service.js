@@ -1,5 +1,4 @@
 const baseURL = process.env.REACT_APP_BASE_URL;
-
 /*
 * @param {object} httpClient - cliente HTTP para fazer requisições
 * returns {Promise<Array>} - lista de produtos
