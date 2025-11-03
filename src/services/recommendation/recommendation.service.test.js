@@ -84,6 +84,7 @@ describe('recommendationService', () => {
     expect(recommendations).toHaveLength(1);
     expect(recommendations[0].name).toBe('RD Conversas');
   });
+  // Just a light performance test to ensure that the service is not crasshing
   test('Teste leve de performance - muitos produtos - MultipleProducts', async () => {
     const bigProductsList = Array.from({ length: 20000 }, (_, i) => ({
       ...mockProducts[i % mockProducts.length],
@@ -118,6 +119,7 @@ describe('recommendationService', () => {
 
     expect(duration).toBeLessThan(500);
   });
+  // Just a light performance test to ensure that the service is not crasshing
   test('Teste leve de performance - muitos produtos - SingleProducts', async () => {
     const bigProductsList = Array.from({ length: 20000 }, (_, i) => ({
       ...mockProducts[i % mockProducts.length],

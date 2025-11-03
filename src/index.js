@@ -8,8 +8,11 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      <App />
+    <App />
   </React.StrictMode>
 );
 
-reportWebVitals();
+reportWebVitals((metric) => {
+  //Definir um destino para as métricas de web vitals: GTM, Analytics, LOG, DataDot...
+  console.info(`[Web Vitals] ${metric.name}: ${metric.value}`);
+});

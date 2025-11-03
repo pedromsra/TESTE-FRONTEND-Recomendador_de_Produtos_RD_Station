@@ -9,7 +9,7 @@ import useRecommendations from '../../hooks/useRecommendations';
 import { navigate } from '../../utils/navigation';
 
 function Form() {
-  const { preferences, features, products } = useProducts();
+  const { preferences, features, products, loading, error } = useProducts();
 
   const { formData, handleChange } = useForm({
     selectedPreferences: [],
@@ -31,12 +31,14 @@ function Form() {
       onSubmit={handleSubmit}
     >
       <Preferences
+        loading={loading}
         preferences={preferences}
         onPreferenceChange={(selected) =>
           handleChange('selectedPreferences', selected)
         }
       />
       <Features
+        loading={loading}
         features={features}
         onFeatureChange={(selected) =>
           handleChange('selectedFeatures', selected)
