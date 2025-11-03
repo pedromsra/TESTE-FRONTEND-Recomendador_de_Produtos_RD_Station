@@ -29,7 +29,7 @@ function Preferences({
         <OptionsListPlaceHolder />
       )}
       {!loading && preferences.length > 0 && (
-        <ul>
+        <ul data-testid="preferences-list">
           {preferences.map((preference, index) => (
             <li key={index} className="mb-2">
               <Checkbox

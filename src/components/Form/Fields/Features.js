@@ -24,7 +24,7 @@ function Features({
       <h2 className="text-lg font-bold mb-2">Funcionalidades:</h2>
       {loading && <OptionsListPlaceHolder />}
       {!loading && features.length > 0 && (
-        <ul>
+        <ul data-testid="features-list">
           {features.map((feature, index) => (
             <li key={index} className="mb-2">
               <Checkbox
