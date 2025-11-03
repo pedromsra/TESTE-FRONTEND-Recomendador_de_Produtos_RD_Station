@@ -9,7 +9,7 @@ function RecommendationList() {
 
       {recommendations.length === 0 && <p>Nenhuma recomendação encontrada.</p>}
 
-      <ul>
+      <ul data-testid="recommendations-list">
         {recommendations.map((recommendation, index) => (
           <li key={index} className="mb-2">
             {recommendation.name}
