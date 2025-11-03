@@ -1,6 +1,6 @@
 import {getProducts} from './product.service';
 import mockProducts from '../../mocks/mockProducts';
-const baseURL = process.env.REACT_APP_BASE_URL;
+const baseURL = process.env.REACT_APP_BASE_URL || 'http://localhost:3001';
 
 describe('getProducts service', () => {
   const mockHttpClient = {

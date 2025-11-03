@@ -1,4 +1,4 @@
-const baseURL = process.env.REACT_APP_BASE_URL;
+const baseURL = process.env.REACT_APP_BASE_URL || 'http://localhost:3001';
 /**
 * @param {object} httpClient - cliente HTTP para fazer requisições
 * @returns {Promise<Array>} - lista de produtos
