@@ -9,7 +9,7 @@ import useRecommendations from '../../hooks/useRecommendations';
 import { navigate } from '../../utils/navigation';
 
 function Form() {
-  const { preferences, features, products, loading, error } = useProducts();
+  const { preferences, features, products, loading } = useProducts();
 
   const { formData, handleChange } = useForm({
     selectedPreferences: [],

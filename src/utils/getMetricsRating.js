@@ -1,3 +1,4 @@
+//Baseado na documentação: https://developer.chrome.com/docs/lighthouse/performance/performance-scoring?hl=pt-br
 function getRating(metric) {
   const { name, value } = metric;
 
