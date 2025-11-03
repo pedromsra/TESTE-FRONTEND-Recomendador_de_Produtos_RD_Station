@@ -6,9 +6,11 @@ import { SubmitButton } from './SubmitButton';
 import useProducts from '../../hooks/useProducts';
 import useForm from '../../hooks/useForm';
 import useRecommendations from '../../hooks/useRecommendations';
+import { navigate } from '../../utils/navigation';
 
 function Form() {
-  const { preferences, features, products } = useProducts();
+  const { preferences, features, products, loading } = useProducts();
+
   const { formData, handleChange } = useForm({
     selectedPreferences: [],
     selectedFeatures: [],
@@ -20,6 +22,7 @@ function Form() {
   const handleSubmit = (e) => {
     e.preventDefault();
     generateRecommendations(formData);
+    navigate('#recommendation-list');
   };
 
   return (
@@ -28,12 +31,14 @@ function Form() {
       onSubmit={handleSubmit}
     >
       <Preferences
+        loading={loading}
         preferences={preferences}
         onPreferenceChange={(selected) =>
           handleChange('selectedPreferences', selected)
         }
       />
       <Features
+        loading={loading}
         features={features}
         onFeatureChange={(selected) =>
           handleChange('selectedFeatures', selected)
@@ -44,7 +49,10 @@ function Form() {
           handleChange('selectedRecommendationType', selected)
         }
       />
-      <SubmitButton text="Obter recomendação" />
+      <SubmitButton
+        text="Obter recomendação"
+        title="Selecione Funcionalidades e/ou Preferências do seu interesse"
+      />
     </form>
   );
 }

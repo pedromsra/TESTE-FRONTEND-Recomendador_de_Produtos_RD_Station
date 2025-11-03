@@ -4,6 +4,7 @@ import './index.css';
 import './tailwind.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import getMetricsRating from './utils/getMetricsRating';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,4 +13,7 @@ root.render(
   </React.StrictMode>
 );
 
-reportWebVitals();
+reportWebVitals((metric) => {
+  //Definir um destino para as métricas de web vitals: GTM, Analytics, LOG, DataDot...
+  console.info(`[Web Vitals] ${metric.name}: ${metric.value} - ${getMetricsRating(metric)}`);
+});

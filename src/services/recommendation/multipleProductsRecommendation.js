@@ -1,4 +1,4 @@
-export function filterByFeaturesOrPreferences({products, selectedFeatures, selectedPreferences}) {
+export function multipleProductsRecommendation({products, selectedFeatures, selectedPreferences}) {
   const featuresSet = new Set(selectedFeatures || []);
   const preferencesSet = new Set(selectedPreferences || []);
 

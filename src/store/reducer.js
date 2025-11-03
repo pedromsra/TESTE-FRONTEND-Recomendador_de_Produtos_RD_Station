@@ -1,6 +1,6 @@
 import { SET_RECOMMENDATIONS } from "./actions";
 
-function recommendedReducer(state, action) {
+function recommendationReducer(state, action) {
   switch (action.type) {
     case SET_RECOMMENDATIONS:
       return [...action.payload];
@@ -9,4 +9,4 @@ function recommendedReducer(state, action) {
   }
 }
 
-export { recommendedReducer };
+export { recommendationReducer };

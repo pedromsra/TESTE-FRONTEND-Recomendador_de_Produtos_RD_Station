@@ -1,7 +1,7 @@
 // useRecommendations.js
 
 import { useContext } from 'react';
-import recommendationService from '../services/recommendation.service';
+import { getRecommendations } from '../services';
 import { RecommendationContext } from '../store';
 import { handleSetRecommendations } from '../store/actions';
 
@@ -13,12 +13,12 @@ function useRecommendations(products) {
   };
 
   const generateRecommendations = (formData) => {
-    const recommendations = recommendationService.getRecommendations(formData, products);
+    const recommendations = getRecommendations(formData, products);
     setRecommendations(recommendations);
     return recommendations;
   }
 
-  return { recommendations: state, generateRecommendations, setRecommendations };
+  return { recommendations: state, generateRecommendations };
 }
 
 export default useRecommendations;

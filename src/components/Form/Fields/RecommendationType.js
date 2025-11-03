@@ -3,7 +3,7 @@ import Checkbox from '../../shared/Checkbox';
 
 function RecommendationType({ onRecommendationTypeChange }) {
   return (
-    <div className="mb-4">
+    <section className="mb-4">
       <h2 className="text-lg font-bold mb-2">Tipo de Recomendação:</h2>
       <div className="flex items-center">
         <Checkbox
@@ -13,11 +13,10 @@ function RecommendationType({ onRecommendationTypeChange }) {
           id="SingleProduct"
           onChange={() => onRecommendationTypeChange('SingleProduct')}
           className="mr-2 w-fit h-fit"
-        >
-          <label htmlFor="SingleProduct" className="mr-4">
-            Produto Único
-          </label>
-        </Checkbox>
+        />
+        <label htmlFor="SingleProduct" className="mr-4">
+          Produto Único
+        </label>
         <Checkbox
           type="radio"
           name="recommendationType"
@@ -25,11 +24,10 @@ function RecommendationType({ onRecommendationTypeChange }) {
           id="MultipleProducts"
           onChange={() => onRecommendationTypeChange('MultipleProducts')}
           className="mr-2"
-        >
-          <label htmlFor="MultipleProducts">Múltiplos Produtos</label>
-        </Checkbox>
+        />
+        <label htmlFor="MultipleProducts">Múltiplos Produtos</label>
       </div>
-    </div>
+    </section>
   );
 }
 
